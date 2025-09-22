@@ -15,7 +15,7 @@ apt-get install -y nodejs git make g++ gcc build-essential
 
 Копируем файлы
 
-git clone https://github.com/munrexio/yandex2mqtt.git /mnt/data/root/yandex2mqtt
+git clone https://github.com/DDEEXX/yandex2mqtt.git /mnt/data/root/yandex2mqtt
 
 Задаём права.
 
@@ -107,7 +107,7 @@ https://yandex.ru/dev/dialogs/alice/doc/smart-home/concepts/on_off-docpage/
 
 Название: Любое
 
-Endpoint URL: https://вашдомен/provider
+Endpoint URL: https://ddeexx80.ru:445/provider
 
 Ставим галку "Не показывать в каталоге"
 
@@ -119,9 +119,9 @@ Endpoint URL: https://вашдомен/provider
 
 Идентификатор  и секрет : берем из конфигурации yandex2mqtt в блоке "clients".
 
-URL авторизации: https://вашдомен/dialog/authorize
+URL авторизации: https://ddeexx80.ru:445/dialog/authorize
 
-URL для получения токена: https://вашдомен/oauth/token
+URL для получения токена: https://ddeexx80.ru:445/oauth/token
 
 Сохраняем связку и выбираем её в навыке. Выбираем иконку, пишем описание, нажимаем "Сохранить". 
 

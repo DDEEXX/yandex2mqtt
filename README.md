@@ -7,29 +7,43 @@
 
 Настраиваем репозиторий Node JS
 
+```
 curl -sL https://deb.nodesource.com/setup_10.x | bash -
+```
 
 Устанавливаем необходимые компоненты
 
+```
 apt-get install -y nodejs git make g++ gcc build-essential
+```
 
 Копируем файлы
 
+```
 git clone https://github.com/DDEEXX/yandex2mqtt.git /opt/yandex2mqtt
+```
 
 Задаём права.
 
+```
 chown -R root:root /opt/yandex2mqtt
+```
 
 Заходим в директорию и запускаем установку
 
+```
 cd /opt/yandex2mqtt
+```
 
+```
 npm install
+```
 
 Запускаем мост  (Перед запуском мост нужно настроить)
 
+```
 npm start
+```
 
 ## Автозапуск
 
@@ -41,6 +55,7 @@ nano /etc/systemd/system/yandex2mqtt.service
 
 и впишите в него:
 
+```
 [Unit]
 
 Description=yandex2mqtt
@@ -52,7 +67,7 @@ After=network.target
 
 ExecStart=/usr/bin/npm start
 
-WorkingDirectory=/mnt/data/root/yandex2mqtt
+WorkingDirectory=/opt/yandex2mqtt
 
 StandardOutput=inherit
 
@@ -66,21 +81,24 @@ User=root
 [Install]
 
 WantedBy=multi-user.target
-
+```
 
 Для включения сервиса впишите в консоль:
 
+```
 systemctl enable yandex2mqtt.service
+```
 
 
 После этого можно управлять командами:
 
+```
 service yandex2mqtt start
 
 service yandex2mqtt stop
 
 service yandex2mqtt restart
-
+```
 
 ## Настройка
 

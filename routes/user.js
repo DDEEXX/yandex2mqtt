@@ -69,20 +69,23 @@ module.exports.action = [
         devices: []
       }
     };
-    for (var i in request.body.payload.devices) {
-      var id = request.body.payload.devices[i].id;
+
+    for (const payloadDevice of request.body.payload.devices) {
+      const {id} = payloadDevice;
+
+      const capabilities = [];
       const curDevice = global.devices.find(device => device.data.id == id);
-      try {
 
-        var capabilities = curDevice.setState(request.body.payload.devices[i].capabilities[0].state.value, request.body.payload.devices[i].capabilities[0].type, request.body.payload.devices[i].capabilities[0].state.instance);
-
-      } catch (err) {
-
-        var capabilities = curDevice.setState(true, request.body.payload.devices[i].capabilities[0].type, 'mute');
+      for (const pdc of payloadDevice.capabilities) {
+        try {
+          capabilities.push(curDevice.setState(pdc.state.value, pdc.type, pdc.state.instance));
+        } catch (err) {
+          capabilities.push(curDevice.setState(true, pdc.type, 'mute'));
+        }
       }
 
-      r.payload.devices.push({ id: id, capabilities: capabilities });
-    }
+      r.payload.devices.push({id, capabilities});
+    };
     response.send(r);
   }
 ];

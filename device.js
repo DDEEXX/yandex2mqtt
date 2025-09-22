@@ -18,6 +18,23 @@ class device {
     return this.data;
   }
 
+  getState () {
+    const {id, capabilities} = this.data;
+    const device = {
+      id,
+      capabilities: (() => {
+        return capabilities.filter(c => c.retrievable === true).map(c => {
+          return {
+            type: c.type,
+            state: c.state
+          }
+        })
+      })() || [],
+    }
+
+    return device;
+  }
+
   findDevIndex(arr, elem) {
     for (var i = 0; i < arr.length; i++) {
       if (arr[i].type === elem) {
@@ -69,17 +86,16 @@ class device {
     if (topic) {
       this.client.publish(topic, int);
     }
-    return [
-      {
-        'type': type,
-        'state': {
+
+    return {
+      'type': type,
+      'state': {
           'instance': inst,
           'action_result': {
             'status': 'DONE',
           },
         },
-      },
-    ];
+    }
   }
 }
 

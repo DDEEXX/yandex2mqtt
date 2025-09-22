@@ -15,15 +15,15 @@ apt-get install -y nodejs git make g++ gcc build-essential
 
 Копируем файлы
 
-git clone https://github.com/DDEEXX/yandex2mqtt.git /mnt/data/root/yandex2mqtt
+git clone https://github.com/DDEEXX/yandex2mqtt.git /opt/yandex2mqtt
 
 Задаём права.
 
-chown -R root:root /mnt/data/root/yandex2mqtt
+chown -R root:root /opt/yandex2mqtt
 
 Заходим в директорию и запускаем установку
 
-cd /mnt/data/root/yandex2mqtt
+cd /opt/yandex2mqtt
 
 npm install
 

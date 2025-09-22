@@ -33,7 +33,13 @@ npm start
 
 ## Автозапуск
 
-В папке  /etc/systemd/system/ создайте файл yandex2mqtt.service и впишите в него:
+В папке  /etc/systemd/system/ создайте файл yandex2mqtt.service 
+
+```
+nano /etc/systemd/system/yandex2mqtt.service
+```
+
+и впишите в него:
 
 [Unit]
 

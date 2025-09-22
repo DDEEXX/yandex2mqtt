@@ -109,6 +109,7 @@ if (statPairs) {
     client.on('connect', () => {
         client.subscribe(statPairs.map(pair => pair.topic));
         client.on('message', (topic, message) => {
+            console.log(topic);
             const matchedDeviceId = statPairs.findIndex(pair => topic.toLowerCase() === pair.topic.toLowerCase());
             if (matchedDeviceId == -1) return;
 
